@@ -1,0 +1,33 @@
+html
+	body
+		a(href="/") Home
+		='        '
+		a(href="/quiz") Quiz
+		='        '
+		a(href="/users") Users
+		='        '
+		if lI || !disL
+			a(href='/users/'+uSe._id)=uSe.username
+		if disL
+			br
+			form(method='POST' action='/login')
+				p
+					| username:
+					input(type='text', name='username', required)
+					br
+					| password:
+					input(type='password', name='password', required)
+				input(type='submit', value='Log In')
+		h1= "Profile for: " + user.username
+		if lI
+			p Privacy:
+			select#privacy
+				option="On"
+				option="Off"
+			button#saveP(type="button" uname=user.username onclick='sP()') Save
+			br
+			button#logOut(type="button" uname=user.username onclick='lOut()') Log Out
+		p="Total Quizzes: " + user.total_quizzes
+		br
+		p="Average Score: " + user.total_score/user.total_quizzes
+		script(src="/js/user.js")

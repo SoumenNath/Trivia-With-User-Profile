@@ -1,0 +1,26 @@
+html
+	head
+		title Quiz Tracker
+
+	body
+		a(href="/") Home
+		='        '
+		a(href="/quiz") Quiz
+		='        '
+		a(href="/users") Users
+		='        '
+		if loggedIn
+			a(href='/users/'+user._id)=user.username
+		else
+			br
+			form(method='POST' action='/login')
+				p
+					| username:
+					input(type='text', name='username', required)
+					br
+					| password:
+					input(type='password', name='password', required)
+				input(type='submit', value='Log In')
+		br
+		h1 Welcome to the Quiz Tracker
+		br
